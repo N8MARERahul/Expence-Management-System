@@ -24,6 +24,7 @@
   },
   "type": "module",
   "devDependencies": {
+    "cypress": "^13.17.0",
     "nodemon": "^3.1.7"
   }
 }

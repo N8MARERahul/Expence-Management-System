@@ -231,6 +231,21 @@ const updateAccountDetails = asyncHandler(async (req, res) => {
     .json( new ApiResponse(200, user, "Account details updated Successfully!"))
 })
 
+const deleteUser = asyncHandler(async (req, res) => {
+    await User.findByIdAndDelete(req.user._id)
+
+    return res
+    .status(200)
+    .clearCookie("accessToken", options)
+    .clearCookie("refreshToken", options)
+    .json(
+        new ApiResponse(
+            200,
+            {},
+            "User deleted successfully"
+        )
+    )
+})
 export {
     registerUser,
     loginUser,
@@ -240,4 +255,5 @@ export {
     getCurrentUser,
     updateAccountDetails,
     generateAccessAndRefreshTokens,
+    deleteUser
 }
